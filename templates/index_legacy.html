@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+{% from 'bootstrap5/form.html' import render_form %}
+{% block title %}Experiment's setup{% endblock %}
+{% block content %}
+<div class="px-4 pt-5 my-5 text-center border-bottom">
+    <h1 class="display-8 fw-bold text-body-emphasis">Welcome to my hobby project!</h1>
+    <div class="col-lg-6 mx-auto">
+      <p class="lead mb-4">Fill out the experiment form then run and analyze your custom experiment</p>
+        <div class="container" >
+            <div class="row">
+                <div class="col-md-8" style="padding-right: 35px;">
+                        <div style="text-align: center; width: 100%; margin: 0 auto;">
+                            <h4 class="display-8 fw-bold text-body-emphasis mb-3">Experiment's rules</h4>
+                            <form method="POST" action="/">
+                                {{ form.hidden_tag() }}
+                                <div class="row mb-2">
+                                  <label for="name" class="col-sm-4 col-form-label text-start">Name</label>
+                                  <div class="col-sm-8">
+                                      {{ form.name(class="form-control") }}
+                                  </div>
+                                </div>
+                                <div class="row mb-2">
+                                  <label for="description" class="col-sm-4 col-form-label text-start">Description</label>
+                                  <div class="col-sm-8">
+                                      {{ form.description(class="form-control") }}
+                                  </div>
+                              </div>
+                              <div class="row mb-2">
+                                  <label for="cooperation_points" class="col-sm-7 col-form-label text-start">Cooperation points</label>
+                                  <div  class="col-sm-5">
+                                      {{ form.cooperation_points(class="form-control") }}
+                                  </div>
+                              </div>
+                              <div class="row mb-2">
+                                  <label for="one_side_betrayal_points" class="col-sm-7 col-form-label text-start">One side betrayal points</label>
+                                  <div class="col-sm-5">
+                                      {{ form.one_side_betrayal_points(class="form-control") }}
+                                  </div>
+                              </div>
+                              <div class="row mb-2">
+                                  <label for="two_side_betrayal_points" class="col-sm-7 col-form-label text-start">Two side betrayal points</label>
+                                  <div class="col-sm-5">
+                                      {{ form.two_side_betrayal_points(class="form-control") }}
+                                  </div>
+                              </div>
+                              <div class="row mb-2">
+                                  <label for="rounds" class="col-sm-7 col-form-label text-start">Rounds</label>
+                                  <div class="col-sm-5">
+                                      {{ form.rounds(class="form-control") }}
+                                  </div>
+                              </div>
+                              <div class="row mb-2">
+                                  <label for="matches" class="col-sm-7 col-form-label text-start">Matches</label>
+                                  <div class="col-sm-5">
+                                      {{ form.matches(class="form-control") }}
+                                  </div>
+                              </div>
+                              <div class="row mb-2">
+                                  <label for="waves" class="col-sm-7 col-form-label text-start">Waves</label>
+                                  <div class="col-sm-5">
+                                      {{ form.waves(class="form-control") }}
+                                  </div>
+                              </div>
+                              <div class="row mb-2">
+                                  <label for="num_eliminated" class="col-sm-7 col-form-label text-start">Number eliminated</label>
+                                  <div class="col-sm-5">
+                                      {{ form.num_eliminated(class="form-control") }}
+                                  </div>
+                              </div>
+                              <div class="row mb-4">
+                                  <label for="winners_premium" class="col-sm-7 col-form-label text-start">Winner's Premium</label>
+                                  <div class="col-sm-5">
+                                      {{ form.winners_premium(class="form-control") }}
+                                  </div>
+                              </div>
+                              <div class="row mb-4">
+                                  <div class="col-sm-5">
+                                      {{ form.submit(class="btn btn-primary") }}
+                                  </div>
+                              </div>
+
+                            </form>
+
+
+
+                        </div>
+                </div>
+                <div class="col-md-4" style="border: 2px solid black;">
+                            <h5>HERE WILL BE A FORM FOR CHOOSING PLAYERS</h5>
+                        </div>
+            </div>
+        </div>
+
+      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
+          <a href="/downloads"> <button type="button" class="btn btn-primary btn-lg-4" >Download Data</button> </a>
+          <a href="/endpoints"> <button type="button" class="btn btn-outline-secondary btn-lg-4">Endpoints description</button> </a>
+          <a href="/downloads"> <button type="button" class="btn btn-outline-secondary btn-lg-4">View visualisations</button> </a>
+          <a href="/downloads"> <button type="button" class="btn btn-dark btn-lg-4">Read about the project</button> </a>
+
+      </div>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,187 @@
+{% extends "base.html" %}
+{% from 'bootstrap5/form.html' import render_form %}
+{% block title %}Experiment's setup{% endblock %}
+{% block content %}
+<div class="px-4 pt-3 my-2 text-center border-bottom">
+    <h1 class="display-8 fw-bold text-body-emphasis">Experiment is running...</h1>
+    <div class="col-lg-6 mx-auto">
+      <p class="lead mb-4">Please wait for the experiment to finish and for plots with results to be created</p>
+        <form method="POST" action="/">
+        <div class="container" style="width: 140%; margin: 0 auto; position: relative; left: -20%;" >
+            <div class="row">
+                <div class="col-md-6">
+                    <h5 class="display-8 fw-bold text-body-emphasis mb-3">Experiment's rules</h5>
+                </div>
+                <div class="col-md-6">
+                    <h5 class="display-8 fw-bold text-body-emphasis mb-3">Players setup</h5>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6" style="padding-right: 45px;">
+                    <div style="text-align: center; width: 100%; margin: 0 auto;">
+                            {{ form.hidden_tag() }}
+                            <div class="row mb-2">
+                              <label for="name" class="col-sm-4 col-form-label text-start">Name</label>
+                              <div class="col-sm-8">
+                                  {{ form.name(class="form-control") }}
+                              </div>
+                            </div>
+                            <div class="row mb-2">
+                              <label for="description" class="col-sm-4 col-form-label text-start">Description</label>
+                              <div class="col-sm-8">
+                                  {{ form.description(class="form-control") }}
+                              </div>
+                          </div>
+                          <div class="row mb-2">
+                              <label for="cooperation_points" class="col-sm-9 col-form-label text-start">Cooperation points</label>
+                              <div  class="col-sm-3">
+                                  {{ form.cooperation_points(class="form-control") }}
+                              </div>
+                          </div>
+                          <div class="row mb-2">
+                              <label for="one_side_betrayal_points" class="col-sm-9 col-form-label text-start">One side betrayal points</label>
+                              <div class="col-sm-3">
+                                  {{ form.one_side_betrayal_points(class="form-control") }}
+                              </div>
+                          </div>
+                          <div class="row mb-2">
+                              <label for="two_side_betrayal_points" class="col-sm-7 col-form-label text-start">Two side betrayal points</label>
+                              <div class="col-sm-5">
+                                  {{ form.two_side_betrayal_points(class="form-control") }}
+                              </div>
+                          </div>
+                          <div class="row mb-2">
+                              <label for="rounds" class="col-sm-7 col-form-label text-start">Rounds</label>
+                              <div class="col-sm-5">
+                                  {{ form.rounds(class="form-control") }}
+                              </div>
+                          </div>
+                          <div class="row mb-2">
+                              <label for="matches" class="col-sm-7 col-form-label text-start">Matches</label>
+                              <div class="col-sm-5">
+                                  {{ form.matches(class="form-control") }}
+                              </div>
+                          </div>
+                          <div class="row mb-2">
+                              <label for="waves" class="col-sm-7 col-form-label text-start">Waves</label>
+                              <div class="col-sm-5">
+                                  {{ form.waves(class="form-control") }}
+                              </div>
+                          </div>
+                          <div class="row mb-2">
+                              <label for="num_eliminated" class="col-sm-7 col-form-label text-start">Number eliminated</label>
+                              <div class="col-sm-5">
+                                  {{ form.num_eliminated(class="form-control") }}
+                              </div>
+                          </div>
+                          <div class="row mb-4">
+                              <label for="winners_premium" class="col-sm-7 col-form-label text-start">Winner's Premium</label>
+                              <div class="col-sm-5">
+                                  {{ form.winners_premium(class="form-control") }}
+                              </div>
+                          </div>
+                          <div class="row mb-4">
+                              <div class="col-sm-12 text-end">
+                                  {{ form.submit(class="btn btn-primary") }}
+                              </div>
+                          </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div style="text-align: center; width: 100%; margin: 0 auto;">
+                        <div class="row mb-4">
+                              <div class="col-sm-3"> <img src="static/rando_avatar.svg" class="img-fluid"> </div>
+                              <label for="Rando" class="col-sm-6 col-form-label text-start fs-5">Rando</label>
+                              <div class="col-sm-3 pt-1">
+                                  {{ form.rando_n(class="form-control") }}
+                              </div>
+                        </div>
+                        <div class="row mb-4">
+                              <div class="col-sm-3"> <img src="static/defector_avatar.svg" class="img-fluid"> </div>
+                              <label for="Defector" class="col-sm-6 col-form-label text-start fs-5">Defector</label>
+                              <div class="col-sm-3 pt-1">
+                                  {{ form.defector_n(class="form-control") }}
+                              </div>
+                        </div>
+                        <div class="row mb-4">
+                              <div class="col-sm-3"> <img src="static/rather_defector_avatar.svg" class="img-fluid"> </div>
+                              <label for="RatherDefector" class="col-sm-6 col-form-label text-start fs-5">Rather Defector</label>
+                              <div class="col-sm-3 pt-1">
+                                    {{ form.rather_defector_n(class="form-control") }}
+                              </div>
+                        </div>
+                        <div class="row mb-4">
+                              <div class="col-sm-3"> <img src="static/grim_trigger_avatar.svg" class="img-fluid"> </div>
+                              <label for="GrimTrigger" class="col-sm-6 col-form-label text-start fs-5">Grim Trigger</label>
+                              <div class="col-sm-3 pt-1">
+                                    {{ form.grim_trigger_n(class="form-control") }}
+                              </div>
+                        </div>
+                        <div class="row mb-4">
+                              <div class="col-sm-3"> <img src="static/titfortat_avatar.svg" class="img-fluid"> </div>
+                              <label for="TitForTat" class="col-sm-6 col-form-label text-start fs-5">Tit For Tat</label>
+                              <div class="col-sm-3 pt-1">
+                                    {{ form.tft_n(class="form-control") }}
+                              </div>
+                        </div>
+
+
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div style="text-align: center; width: 100%; margin: 0 auto;">
+                        <div class="row mb-2">
+                              <div class="col-sm-3"> <img src="static/forgiving_titfortat_avatar.svg" class="img-fluid"> </div>
+                              <label for="ForgivingTitForTat" class="col-sm-6 col-form-label text-start fs-5">Forgiving Tit For Tat</label>
+                              <div class="col-sm-3 pt-1">
+                                  {{ form.forgiving_tft_n(class="form-control") }}
+                              </div>
+                        </div>
+                        <div class="row mb-4">
+                              <div class="col-sm-3"> <img src="static/cooperator_avatar.svg" class="img-fluid"> </div>
+                              <label for="Cooperator" class="col-sm-6 col-form-label text-start fs-5">Cooperator</label>
+                              <div class="col-sm-3 pt-1">
+                                    {{ form.cooperator_n(class="form-control") }}
+                              </div>
+                        </div>
+                        <div class="row mb-2">
+                              <div class="col-sm-3"> <img src="static/much_rather_avatar.svg" class="img-fluid"> </div>
+                              <label for="MuchRatherDefector" class="col-sm-6 col-form-label text-start fs-5">Much Rather Defector</label>
+                              <div class="col-sm-3 pt-1">
+                                    {{ form.much_rather_defector_n(class="form-control") }}
+                              </div>
+                        </div>
+                        <div class="row mb-4">
+                              <div class="col-sm-3"> <img src="static/pavlov_avatar.svg" class="img-fluid"> </div>
+                              <label for="Pavlov" class="col-sm-6 col-form-label text-start fs-5">Pavlov</label>
+                              <div class="col-sm-3 pt-1">
+                                    {{ form.pavlov_n(class="form-control") }}
+                              </div>
+                        </div>
+                        <div class="row mb-4">
+                              <div class="col-sm-3"> <img src="static/suspicious_titfortat_avatar.svg" class="img-fluid"> </div>
+                              <label for="Suspicious" class="col-sm-6 col-form-label text-start fs-5">Suspicious Tit For Tat</label>
+                              <div class="col-sm-3 pt-1">
+                                      {{ form.sus_tft_n(class="form-control") }}
+                              </div>
+                        </div>
+
+
+                </div>
+
+            </div>
+        </div>
+      </form>
+
+      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
+          <a href="/downloads"> <button type="button" class="btn btn-primary btn-lg-4" >Download Data</button> </a>
+          <a href="/endpoints"> <button type="button" class="btn btn-outline-secondary btn-lg-4">Endpoints description</button> </a>
+          <a href="/downloads"> <button type="button" class="btn btn-outline-secondary btn-lg-4">View visualisations</button> </a>
+          <a href="/downloads"> <button type="button" class="btn btn-dark btn-lg-4">Read about the project</button> </a>
+
+      </div>
+    </div>
+  </div>
+{% endblock %}

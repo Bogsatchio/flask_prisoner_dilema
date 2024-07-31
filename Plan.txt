@@ -1,0 +1,2 @@
+ - Dodanie running.html - który wyświetla sie podczas wykonywania eksperymentu
+ - wstępne pokazanie na stronie wyników eksperymentu
