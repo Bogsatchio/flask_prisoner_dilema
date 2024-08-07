@@ -19,7 +19,7 @@
 
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/"><img src="static/prisoner.svg" height="70" style="margin-right: 7px;">
+    <a class="navbar-brand" href="/"><img src="{{ url_for('static', filename='prisoner.svg') }}" height="70" style="margin-right: 7px;">
       <span style="font-size: 24px;">Prisoner's Dilemma Simulation</span></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>

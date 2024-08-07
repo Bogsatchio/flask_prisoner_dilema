@@ -3,17 +3,33 @@
 {% block title %}Experiment's setup{% endblock %}
 {% block content %}
 <div class="px-4 pt-3 my-2 text-center border-bottom">
-    <h1 class="display-8 fw-bold text-body-emphasis">Experiment is running...</h1>
+    <h1 class="display-8 fw-bold text-body-emphasis">{{ experimentId }} results</h1>
     <div class="col-lg-6 mx-auto">
-      <p class="lead mb-4">Please wait for the experiment to finish and for plots with results to be created</p>
+      <p class="lead mb-4"> Placeholder</p>
         <form method="POST" action="/">
-        <div class="container" style="width: 140%; margin: 0 auto; position: relative; left: -20%;" >
+        <div class="container" style="width: 150%; margin: 0 auto; position: relative; left: -20%;" >
             <div class="row">
-                <div class="col-md-6">
-                    <h5 class="display-8 fw-bold text-body-emphasis mb-3">Experiment's rules</h5>
+                <div class="col-md-8">
+                    <h5 class="display-8 fw-bold text-body-emphasis mb-3">Population Evolution</h5>
+                        <div class="row">
+                            <h6> Players evolution </h6>
+                        </div>
+                        <div class="row mb-2" style="margin-left: 80px;">
+                            <img src="{{ url_for('static', filename='/' + experimentId + '/players_evolution.svg') }}"
+                             alt="Population Evolution Plot">
+                        </div>
+                        <div class="row mb-2">
+                            <img src="{{ url_for('static', filename='/' + experimentId + '/types_evolution.svg') }}"
+                             alt="Population Evolution Plot">
+                        </div>
+                        <div class="row mb-2" style="margin-left: 80px;">
+                            <img src="{{ url_for('static', filename='/' + experimentId + '/tempers_evolution.svg') }}"
+                             alt="Population Evolution Plot">
+                        </div>
+
                 </div>
-                <div class="col-md-6">
-                    <h5 class="display-8 fw-bold text-body-emphasis mb-3">Players setup</h5>
+                <div class="col-md-4">
+                    <h5 class="display-8 fw-bold text-body-emphasis mb-3">Best players each round</h5>
                 </div>
             </div>
 

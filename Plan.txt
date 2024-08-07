@@ -1,2 +1,5 @@
- - Dodanie running.html - który wyświetla sie podczas wykonywania eksperymentu
- - wstępne pokazanie na stronie wyników eksperymentu
+- zmiana formatu zapisów na wykresów na SVG
+- DOdać ekran czekania po naciśnięciu Submit
+- Ujednolicenie nazw z tymi na stronie z tymi z javy
+- pokazanie wszystkich 3 wykresów
+- zamiana placeholdera na przedstawienie zasad eksperymentu

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% from 'bootstrap5/form.html' import render_form %}
+{% block title %}Experiment's setup{% endblock %}
+{% block content %}
+<script type="text/javascript">
+      // Assuming you have the experiment_id variable available in the template context
+      var experiment_id = "{{ experimentId }}"
+
+      setTimeout(function(){
+        window.location.href = "http://127.0.0.1:5000/results/" + experiment_id;;
+      }, 1); // 1 seconds delay
+</script>
+<div class="px-4 pt-3 my-2 text-center border-bottom">
+    <h1 class="display-8 fw-bold text-body-emphasis"> Waiting for {{ experimentId }} results ....</h1>
+    <div class="col-lg-6 mx-auto">
+      <p class="lead mb-4"> Placeholder</p>
+
+
+      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
+          <a href="/downloads"> <button type="button" class="btn btn-primary btn-lg-4" >Download Data</button> </a>
+          <a href="/endpoints"> <button type="button" class="btn btn-outline-secondary btn-lg-4">Endpoints description</button> </a>
+          <a href="/downloads"> <button type="button" class="btn btn-outline-secondary btn-lg-4">View visualisations</button> </a>
+          <a href="/downloads"> <button type="button" class="btn btn-dark btn-lg-4">Read about the project</button> </a>
+
+      </div>
+    </div>
+  </div>
+{% endblock %}

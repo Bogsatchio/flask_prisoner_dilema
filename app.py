@@ -3,8 +3,13 @@ from flask import Flask, request, jsonify, render_template, redirect, url_for
 from flask_bootstrap import Bootstrap5  # pip install bootstrap-flask
 import subprocess
 import logging
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
 
-from forms.experiments_form import ExperimentsForm, MyForm
+from forms.experiments_form import ExperimentsForm
+from utils.db_utils import get_connection, get_population_plots
+from utils.sqls import get_population_evolution_query
 
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
@@ -43,7 +48,6 @@ def create_app(db_url=None):
                           form.rando_n.data, form.defector_n.data, form.rather_defector_n.data, form.grim_trigger_n.data,
                           form.tft_n.data, form.forgiving_tft_n.data, form.cooperator_n.data,
                           form.much_rather_defector_n.data, form.pavlov_n.data, form.sus_tft_n.data]
-            render_template('running.html', form=form)
 
             return redirect(url_for("run_jar", **{f"p{i}": param for i, param in enumerate(jar_params)}))
             #return redirect(f"/test/{name}")
@@ -59,16 +63,23 @@ def create_app(db_url=None):
                 jar_path = 'jars/PrisonerDilemaSimulation-1.2.jar'
                 result = subprocess.run(['java', '-jar', jar_path] + jar_params, capture_output=True, text=True)
 
-                #Return the output of the JAR file
-                return jsonify({
-                    'stdout': result.stdout,
-                    'stderr': result.stderr,
-                    'returncode': result.returncode
-                })
+                #return render_template("waiting.html", experimentId=jar_params[0])
+                return redirect(f"/results/{jar_params[0]}")
             except Exception as e:
                 return jsonify({'error': str(e)})
         else:
             return "Bad params", 400
+
+    @app.route("/results/<experiment_id>", methods=["GET", "POST"])
+    def results(experiment_id):
+        Session = get_connection()
+        with Session() as session:
+            result = session.execute(get_population_evolution_query(experiment_id))
+            df = pd.DataFrame(result.fetchall(), columns=result.keys())
+            get_population_plots(df, experiment_id)
+
+        return render_template("results.html", experimentId=experiment_id)
+
 
 
 
