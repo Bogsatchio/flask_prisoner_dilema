@@ -10,7 +10,7 @@ db_name = "simulation_dev"
 
 
 def get_connection():
-    connection_string = f"mysql+pymysql://{mysql_user}:{mysql_pass}@localhost:3306/{db_name}"
+    connection_string = f"mysql+pymysql://homestead:secret@mysql:3306/{db_name}"
     engine = create_engine(connection_string)
     return sessionmaker(bind=engine) # context manager for: (with Session() as session:)
 

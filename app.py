@@ -15,8 +15,8 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
 
-os.environ['MYSQL_USER'] = 'dev'
-os.environ['MYSQL_PASS'] = 'epigoldtop'
+os.environ['MYSQL_USER'] = 'homestead'
+os.environ['MYSQL_PASS'] = 'secret'
 
 
 def create_app(db_url=None):
@@ -24,7 +24,7 @@ def create_app(db_url=None):
 
     # data for documentation
     app.config["PROPAGATE_EXCEPTIONS"] = True
-    app.config["API_TITLE"] = "Real Estate API"
+    app.config["API_TITLE"] = "Prisoner Dilema API"
     app.config["API_VERSION"] = "v1"
     app.config["OPENAPI_VERSION"] = "3.0.3"
     app.config["OPENAPI_URL_PREFIX"] = "/"
@@ -60,7 +60,7 @@ def create_app(db_url=None):
         app.logger.debug(f'jar_params: {jar_params}')
         if len(jar_params) == 20:
             try:
-                jar_path = 'jars/PrisonerDilemaSimulation-1.2.jar'
+                jar_path = 'jars/PrisonerDilemaSimulation_docker.jar'
                 result = subprocess.run(['java', '-jar', jar_path] + jar_params, capture_output=True, text=True)
 
                 #return render_template("waiting.html", experimentId=jar_params[0])
