@@ -6,13 +6,13 @@ import os
 
 mysql_user = os.getenv("MYSQL_USER")
 mysql_pass = os.getenv("MYSQL_PASS")
-db_name = "simulation_dev"
+#db_name = "simulation_dev"
 
 
-def get_connection():
+def get_connection(db_name):
     connection_string = f"mysql+pymysql://homestead:secret@mysql:3306/{db_name}"
     engine = create_engine(connection_string)
-    return sessionmaker(bind=engine) # context manager for: (with Session() as session:)
+    return sessionmaker(bind=engine)  # context manager for: (with Session() as session:)
 
 
 def get_population_plots(df, experiment_id):

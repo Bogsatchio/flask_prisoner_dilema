@@ -17,6 +17,7 @@ from wtforms.validators import DataRequired
 
 os.environ['MYSQL_USER'] = 'homestead'
 os.environ['MYSQL_PASS'] = 'secret'
+db_name = "simulation_dev"
 
 
 def create_app(db_url=None):
@@ -72,7 +73,7 @@ def create_app(db_url=None):
 
     @app.route("/results/<experiment_id>", methods=["GET", "POST"])
     def results(experiment_id):
-        Session = get_connection()
+        Session = get_connection(db_name)
         with Session() as session:
             result = session.execute(get_population_evolution_query(experiment_id))
             df = pd.DataFrame(result.fetchall(), columns=result.keys())
