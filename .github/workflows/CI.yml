@@ -27,13 +27,6 @@ jobs:
       run: |
         docker-compose up -d  # Start the containers in detached mode
 
-    - name: Wait for MySQL to be ready
-      run: |
-        until docker exec mysql mysql -h localhost -u homestead -p secret -e 'SELECT 1'; do
-          echo "Waiting for MySQL..."
-          sleep 5
-        done
-
     - name: Set up Python 3.12
       uses: actions/setup-python@v3
       with:
