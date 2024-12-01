@@ -23,16 +23,16 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y docker-compose
         
+    - name: Set up Docker Compose
+      run: |
+        docker-compose up -d  # Start the containers in detached mode
+
     - name: Wait for MySQL to be ready
       run: |
         until docker exec mysql mysql -h mysql -u homestead -psecret -e 'SELECT 1'; do
           echo "Waiting for MySQL..."
           sleep 5
         done
-        
-    - name: Set up Docker Compose
-      run: |
-        docker-compose up -d  # Start the containers in detached mode
 
     - name: Set up Python 3.12
       uses: actions/setup-python@v3
